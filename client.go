@@ -278,7 +278,7 @@ func generatePodSandboxConfig(ctx context.Context, pod *v1.Pod, logDir string, a
 		Annotations:  pod.Annotations,
 		LogDirectory: logDir,
 		DnsConfig:    createPodDnsConfig(pod),
-		Hostname:     createPodHostname(pod),
+		// Hostname:     createPodHostname(pod),
 		PortMappings: createPortMappings(pod),
 		Linux:        createPodSandboxLinuxConfig(pod),
 	}

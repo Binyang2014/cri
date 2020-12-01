@@ -253,7 +253,12 @@ func createPodSandboxLinuxConfig(pod *v1.Pod) *criapi.LinuxPodSandboxConfig {
 	return &criapi.LinuxPodSandboxConfig{
 		CgroupParent: "",
 		SecurityContext: &criapi.LinuxSandboxSecurityContext{
-			NamespaceOptions:   nil, // type *NamespaceOption
+			// NamespaceOptions:   nil, // type *NamespaceOption
+            NamespaceOptions:    &criapi.NamespaceOption{
+                                    Ipc:     criapi.NamespaceMode_POD,
+                                    Network: criapi.NamespaceMode_NODE,
+                                    Pid:     criapi.NamespaceMode_POD,
+                                },
 			SelinuxOptions:     nil, // type *SELinuxOption
 			RunAsUser:          nil, // type *Int64Value
 			RunAsGroup:         nil, // type *Int64Value
